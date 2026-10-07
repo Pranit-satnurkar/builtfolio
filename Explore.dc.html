@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BuiltFolio – Explore Projects</title>
+<meta name="description" content="Browse 1,248 verified architecture, civil engineering and interior projects across India. Filter by type, city, area, cost and role.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#F6F4EF;--card:#FFFFFF;--ink:#15181E;--mute:#626B78;--line:#DDD9CF;
+  --blue:#1F4E8C;--blue-soft:#E8EEF6;--blue-mid:#3A6DB5;
+  --orange:#C94F12;--orange-soft:#FAE8DF;--radius:12px;--nav:68px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
+  --shadow:0 4px 16px rgba(0,0,0,.1),0 2px 6px rgba(0,0,0,.06);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.15),0 4px 12px rgba(0,0,0,.08);
+}
+body{margin:0;font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:'Sora',system-ui,sans-serif;margin:0;line-height:1.2}
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:24px;height:var(--nav)}
+.logo{font-family:'Sora';font-weight:700;font-size:20px;color:var(--blue);display:flex;align-items:center;gap:8px;flex-shrink:0}
+.logo-mark{width:28px;height:28px;background:var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:16px;height:16px;fill:#fff}
+.nav-links{display:flex;gap:4px;flex:1;margin-left:8px}
+.nav-link{padding:8px 14px;font-size:14px;font-weight:500;color:var(--mute);border-radius:8px;transition:all .18s}
+.nav-link:hover{color:var(--ink);background:var(--bg)}
+.nav-link.active{color:var(--ink);font-weight:600}
+.nav-actions{display:flex;gap:10px;align-items:center;flex-shrink:0}
+.btn-ghost-sm{font-size:14px;font-weight:600;color:var(--ink);padding:8px 14px;border-radius:8px;transition:all .18s;border:1.5px solid transparent}
+.btn-ghost-sm:hover{border-color:var(--line);background:var(--card)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;border-radius:9px;padding:10px 20px;font-weight:700;font-size:14px;font-family:'DM Sans';cursor:pointer;border:0;transition:all .2s;box-shadow:0 2px 8px rgba(201,79,18,.3)}
+.btn:hover{background:#b34410;box-shadow:0 4px 16px rgba(201,79,18,.4);transform:translateY(-1px)}
+
+/* SEARCH BAR */
+.search-strip{background:#fff;border-bottom:1px solid var(--line);padding:14px 0}
+.search-inner{max-width:1200px;margin:0 auto;padding:0 24px}
+.search-bar{background:#fff;border-radius:12px;display:flex;align-items:center;max-width:760px;padding:6px;gap:4px;border:1.5px solid var(--line);transition:border-color .2s}
+.search-bar:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(31,78,140,.12)}
+.search-seg{padding:10px 16px;font-weight:700;font-size:13px;white-space:nowrap;cursor:pointer;color:var(--ink);border-right:1px solid var(--line)}
+.search-input{flex:1;padding:0 14px}
+.search-input input{width:100%;border:0;outline:0;font:500 15px 'DM Sans';background:transparent;color:var(--ink)}
+.search-input input::placeholder{color:#9AA5B1}
+.search-city{padding:10px 16px;font-size:13px;color:var(--mute);border-left:1px solid var(--line);cursor:pointer;white-space:nowrap}
+
+/* FILTER PILLS */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--card);border-radius:99px;padding:7px 16px;font-size:13px;font-weight:500;cursor:pointer;transition:all .18s;color:var(--mute);user-select:none;white-space:nowrap}
+.chip:hover{border-color:#b0a994;color:var(--ink);background:#faf9f6;transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chip-icon{font-family:'Material Symbols Outlined';font-size:15px;line-height:1;font-weight:400}
+.chip-clear{font-family:'Material Symbols Outlined';font-size:14px;line-height:1;font-weight:400;margin-left:2px;opacity:.6}
+.filter-divider{width:1px;height:28px;background:var(--line);margin:0 4px}
+
+/* LAYOUT */
+.explore-layout{max-width:1200px;margin:0 auto;padding:24px 24px 64px;display:flex;gap:28px;align-items:flex-start}
+
+/* SIDEBAR */
+.sidebar{width:240px;flex-shrink:0;position:sticky;top:calc(var(--nav) + 24px)}
+.sidebar-card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.sidebar-header{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.sidebar-header h3{font-size:14px;font-weight:700}
+.sidebar-reset{font-size:12px;color:var(--blue);font-weight:600;cursor:pointer}
+.sidebar-reset:hover{color:var(--blue-mid)}
+.filter-group{padding:16px 18px;border-bottom:1px solid var(--line)}
+.filter-group:last-child{border-bottom:0}
+.filter-group-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:10px}
+.filter-opt{display:flex;align-items:center;justify-content:space-between;padding:5px 0;cursor:pointer;font-size:14px;transition:color .15s}
+.filter-opt:hover{color:var(--blue)}
+.filter-opt-left{display:flex;align-items:center;gap:8px}
+.filter-cb{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--line);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:'Material Symbols Outlined';font-size:11px;color:transparent}
+.filter-opt:hover .filter-cb{border-color:var(--blue)}
+.filter-opt.checked .filter-cb{background:var(--blue);border-color:var(--blue);color:#fff}
+.filter-count{font-size:12px;color:var(--mute)}
+.range-track{height:4px;background:var(--line);border-radius:99px;position:relative;margin:8px 0 4px}
+.range-fill{position:absolute;left:0;width:65%;height:100%;background:var(--blue);border-radius:99px}
+.range-thumb{position:absolute;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;background:#fff;border:2px solid var(--blue);box-shadow:var(--shadow-sm);cursor:pointer}
+.range-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--mute)}
+
+/* RESULTS */
+.results{flex:1;min-width:0}
+.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.results-count{font-size:14px;color:var(--mute)}
+.results-count b{color:var(--ink)}
+.sort-select{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;padding:8px 12px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);transition:border-color .15s}
+.sort-select:hover{border-color:var(--blue)}
+.sort-icon{font-family:'Material Symbols Outlined';font-size:16px;line-height:1;font-weight:400}
+
+/* MASONRY */
+.masonry{columns:3;column-gap:14px}
+.masonry-item{break-inside:avoid;margin-bottom:14px}
+.tile{position:relative;border-radius:12px;overflow:hidden;display:flex;align-items:flex-end;cursor:pointer;text-decoration:none;transition:all .3s}
+.tile-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,14,20,.85) 0%,rgba(10,14,20,.1) 55%,transparent 100%);opacity:0;transition:opacity .3s}
+.tile:hover .tile-overlay{opacity:1}
+.tile:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.tile-cap{width:100%;box-sizing:border-box;padding:40px 14px 14px;background:linear-gradient(transparent,rgba(10,14,20,.82));color:#fff;display:flex;flex-direction:column;gap:3px;position:relative;z-index:1}
+.tile-title{font-size:14px;font-weight:700;font-family:'Sora';line-height:1.3}
+.tile-sub{font-size:12px;color:rgba(255,255,255,.7)}
+.tile-badge{position:absolute;top:12px;left:12px;z-index:2;background:rgba(255,255,255,.95);color:var(--blue);font-size:11px;font-weight:700;padding:4px 10px;border-radius:99px;display:flex;align-items:center;gap:4px;backdrop-filter:blur(4px)}
+.tile-badge-icon{font-family:'Material Symbols Outlined';font-size:12px;line-height:1}
+.tile-save{position:absolute;top:12px;right:12px;z-index:2;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Outlined';font-size:18px;color:#fff;opacity:0;transition:all .2s;cursor:pointer}
+.tile:hover .tile-save{opacity:1}
+.tile-save:hover{background:rgba(255,255,255,.25)}
+.tile-role-dots{display:flex;gap:4px;margin-top:4px}
+.tile-role-dot{width:6px;height:6px;border-radius:50%}
+.tile-role-dot.a{background:#6AA3E8}.tile-role-dot.s{background:#F08A4B}.tile-role-dot.i{background:#A3D9A5}.tile-role-dot.c{background:#F5E28A}
+.tile-area{position:absolute;bottom:46px;right:12px;z-index:2;font-size:11px;font-weight:700;color:rgba(255,255,255,.7);text-align:right}
+
+/* LOAD MORE */
+.load-more{text-align:center;margin-top:24px}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--ink);border-radius:9px;padding:12px 28px;font-weight:700;font-size:14px;font-family:'DM Sans';background:transparent;color:var(--ink);cursor:pointer;transition:all .2s}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mute)}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:'Sora';font-weight:700;font-size:16px;color:var(--blue)}
+.footer-links{display:flex;gap:20px;font-size:13px}
+.footer-links a:hover{color:var(--ink)}
+
+@media(max-width:1024px){.masonry{columns:2}.sidebar{width:200px}}
+@media(max-width:768px){.sidebar{display:none}.explore-layout{padding:16px}.masonry{columns:2}}
+@media(max-width:480px){.masonry{columns:1}}
+</style>
+</helmet>
+
+<div style="min-height:100%">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="Main.dc.html" class="logo">
+      <div class="logo-mark"><svg viewBox="0 0 16 16"><path d="M2 14V6l6-4 6 4v8H10V9H6v5H2z"/></svg></div>
+      BuiltFolio
+    </a>
+    <div class="nav-links">
+      <a href="Explore.dc.html" class="nav-link active">Explore</a>
+      <a href="People.dc.html" class="nav-link">Professionals</a>
+      <a href="#" class="nav-link">Firms</a>
+      <a href="#" class="nav-link">Journal</a>
+    </div>
+    <div class="nav-actions">
+      <a href="#" class="btn-ghost-sm">Log in</a>
+      <a href="Dashboard.dc.html" class="btn">
+        <span style="font-family:'Material Symbols Outlined';font-size:18px;line-height:1;font-weight:400">upload</span>
+        Upload project
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- SEARCH + FILTERS -->
+<div class="search-strip">
+  <div class="search-inner">
+    <div class="search-bar">
+      <span class="search-seg">Projects ▾</span>
+      <label class="search-input">
+        <input id="explore-search" placeholder="3BHK residence, warehouse shed, structural retrofit…" aria-label="Search" autocomplete="off">
+      </label>
+      <span class="search-city">Pune ✕</span>
+      <a href="#" class="btn" style="flex-shrink:0">Search</a>
+    </div>
+    <div class="filter-row">
+      <div class="chip"><span class="chip-icon">home</span> Type ▾</div>
+      <div class="chip"><span class="chip-icon">location_city</span> City ▾</div>
+      <div class="chip"><span class="chip-icon">straighten</span> Area (Sqft) ▾</div>
+      <div class="chip"><span class="chip-icon">currency_rupee</span> Cost (₹) ▾</div>
+      <div class="chip"><span class="chip-icon">calendar_today</span> Year ▾</div>
+      <div class="chip"><span class="chip-icon">badge</span> Role ▾</div>
+      <div class="filter-divider"></div>
+      <div class="chip on"><span class="chip-icon">verified</span> Verified only <span class="chip-clear">close</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="explore-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-header">
+        <h3>Filters</h3>
+        <span class="sidebar-reset">Reset all</span>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-label">Project type</div>
+        <div class="filter-opt checked">
+          <div class="filter-opt-left"><div class="filter-cb">done</div>Residential</div>
+          <span class="filter-count">421</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>Commercial</div>
+          <span class="filter-count">218</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>Industrial</div>
+          <span class="filter-count">134</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>Interiors</div>
+          <span class="filter-count">298</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>Landscape</div>
+          <span class="filter-count">67</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>Infrastructure</div>
+          <span class="filter-count">110</span>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-label">City</div>
+        <div class="filter-opt checked">
+          <div class="filter-opt-left"><div class="filter-cb">done</div>Pune</div>
+          <span class="filter-count">241</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>Mumbai</div>
+          <span class="filter-count">318</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>Nagpur</div>
+          <span class="filter-count">98</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>Bengaluru</div>
+          <span class="filter-count">187</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>Chennai</div>
+          <span class="filter-count">124</span>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-label">Built-up area (Sqft)</div>
+        <div class="range-track">
+          <div class="range-fill" style="left:0;width:65%"></div>
+          <div class="range-thumb" style="left:0%"></div>
+          <div class="range-thumb" style="left:65%"></div>
+        </div>
+        <div class="range-labels"><span>0</span><span>5,000 Sqft</span></div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-label">Cost band (₹)</div>
+        <div class="range-track">
+          <div class="range-fill" style="left:0;width:55%"></div>
+          <div class="range-thumb" style="left:0%"></div>
+          <div class="range-thumb" style="left:55%"></div>
+        </div>
+        <div class="range-labels"><span>₹0</span><span>₹5 Cr</span></div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-label">Year completed</div>
+        <div class="filter-opt checked">
+          <div class="filter-opt-left"><div class="filter-cb">done</div>2024</div>
+          <span class="filter-count">312</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>2023</div>
+          <span class="filter-count">418</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>2022</div>
+          <span class="filter-count">290</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>2021 &amp; earlier</div>
+          <span class="filter-count">228</span>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-label">Professional role</div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>Architect</div>
+          <span class="filter-count">621</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>Structural</div>
+          <span class="filter-count">298</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>Interior Designer</div>
+          <span class="filter-count">210</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>Contractor</div>
+          <span class="filter-count">178</span>
+        </div>
+        <div class="filter-opt">
+          <div class="filter-opt-left"><div class="filter-cb"></div>MEP</div>
+          <span class="filter-count">87</span>
+        </div>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- RESULTS -->
+  <main class="results">
+    <div class="results-header">
+      <div class="results-count"><b>1,248 projects</b> · Residential, Pune · 2024</div>
+      <div class="sort-select"><span class="sort-icon">swap_vert</span>Most relevant ▾</div>
+    </div>
+
+    <div class="masonry">
+
+      <div class="masonry-item">
+        <a href="Project.dc.html" class="tile" style="height:300px;background:linear-gradient(155deg,#8aa0b8 0%,#2e4260 100%)">
+          <div class="tile-overlay"></div>
+          <div class="tile-badge"><span class="tile-badge-icon">verified</span> Verified</div>
+          <span class="tile-save">bookmark_border</span>
+          <div class="tile-area">1,100 Sqft</div>
+          <div class="tile-cap">
+            <div class="tile-role-dots"><div class="tile-role-dot a"></div><div class="tile-role-dot s"></div><div class="tile-role-dot c"></div></div>
+            <div class="tile-title">G+2 Residence, Nagpur</div>
+            <div class="tile-sub">Studio Anvaya · 2024</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="masonry-item">
+        <a href="#" class="tile" style="height:220px;background:linear-gradient(155deg,#c4a47c 0%,#7a5a3a 100%)">
+          <div class="tile-overlay"></div>
+          <span class="tile-save">bookmark_border</span>
+          <div class="tile-area">950 Sqft</div>
+          <div class="tile-cap">
+            <div class="tile-title">Warehouse Shed</div>
+            <div class="tile-sub">Kadam Infra · Nashik · 2023</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="masonry-item">
+        <a href="Courtyard-House.dc.html" class="tile" style="height:360px;background:linear-gradient(155deg,#7fa393 0%,#2f5a4b 100%)">
+          <div class="tile-overlay"></div>
+          <div class="tile-badge"><span class="tile-badge-icon">verified</span> Verified</div>
+          <span class="tile-save">bookmark_border</span>
+          <div class="tile-area">2,400 Sqft</div>
+          <div class="tile-cap">
+            <div class="tile-role-dots"><div class="tile-role-dot a"></div><div class="tile-role-dot s"></div></div>
+            <div class="tile-title">Courtyard House, Pune</div>
+            <div class="tile-sub">Ritu Desai · 2024</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="masonry-item">
+        <a href="#" class="tile" style="height:260px;background:linear-gradient(155deg,#cfc8bc 0%,#8b8478 100%)">
+          <div class="tile-overlay"></div>
+          <span class="tile-save">bookmark_border</span>
+          <div class="tile-cap">
+            <div class="tile-title">Bungalow Interiors</div>
+            <div class="tile-sub">Sen &amp; Dey · Kolkata · 2023</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="masonry-item">
+        <a href="#" class="tile" style="height:330px;background:linear-gradient(155deg,#d98a5a 0%,#8f3d1a 100%)">
+          <div class="tile-overlay"></div>
+          <div class="tile-badge"><span class="tile-badge-icon">verified</span> Verified</div>
+          <span class="tile-save">bookmark_border</span>
+          <div class="tile-area">18,000 Sqft</div>
+          <div class="tile-cap">
+            <div class="tile-role-dots"><div class="tile-role-dot a"></div><div class="tile-role-dot s"></div><div class="tile-role-dot c"></div></div>
+            <div class="tile-title">Retail Podium, Mumbai</div>
+            <div class="tile-sub">Mehta Associates · 2023</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="masonry-item">
+        <a href="#" class="tile" style="height:240px;background:linear-gradient(155deg,#6d7f9c 0%,#1f2f4a 100%)">
+          <div class="tile-overlay"></div>
+          <span class="tile-save">bookmark_border</span>
+          <div class="tile-cap">
+            <div class="tile-title">Industrial Plant, Surat</div>
+            <div class="tile-sub">Shah Structures · 2024</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="masonry-item">
+        <a href="#" class="tile" style="height:310px;background:linear-gradient(155deg,#b4c09e 0%,#5e6f45 100%)">
+          <div class="tile-overlay"></div>
+          <div class="tile-badge"><span class="tile-badge-icon">verified</span> Verified</div>
+          <span class="tile-save">bookmark_border</span>
+          <div class="tile-area">900 Sqft</div>
+          <div class="tile-cap">
+            <div class="tile-role-dots"><div class="tile-role-dot a"></div></div>
+            <div class="tile-title">Hill Cottage, Lonavala</div>
+            <div class="tile-sub">Ar. Naik · 2024</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="masonry-item">
+        <a href="#" class="tile" style="height:250px;background:linear-gradient(155deg,#a99bb5 0%,#4c3d5c 100%)">
+          <div class="tile-overlay"></div>
+          <span class="tile-save">bookmark_border</span>
+          <div class="tile-cap">
+            <div class="tile-title">Office Fit-Out, Ahmedabad</div>
+            <div class="tile-sub">Bhatt Design · 2024</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="masonry-item">
+        <a href="#" class="tile" style="height:280px;background:linear-gradient(155deg,#8aa0b8 0%,#3b536e 100%)">
+          <div class="tile-overlay"></div>
+          <div class="tile-badge"><span class="tile-badge-icon">verified</span> Verified</div>
+          <span class="tile-save">bookmark_border</span>
+          <div class="tile-cap">
+            <div class="tile-title">Row Houses, Pune</div>
+            <div class="tile-sub">Joshi &amp; Co · 2023</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="masonry-item">
+        <a href="#" class="tile" style="height:230px;background:linear-gradient(155deg,#c9a77c 0%,#7a5a3a 100%)">
+          <div class="tile-overlay"></div>
+          <div class="tile-badge"><span class="tile-badge-icon">verified</span> Verified</div>
+          <span class="tile-save">bookmark_border</span>
+          <div class="tile-cap">
+            <div class="tile-title">Community Hall</div>
+            <div class="tile-sub">Ar. Pawar · Satara · 2024</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="masonry-item">
+        <a href="#" class="tile" style="height:340px;background:linear-gradient(155deg,#7fa393 0%,#2f5a4b 100%)">
+          <div class="tile-overlay"></div>
+          <span class="tile-save">bookmark_border</span>
+          <div class="tile-cap">
+            <div class="tile-title">Duplex Villa, Nagpur</div>
+            <div class="tile-sub">Studio Rekha · 2024</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="masonry-item">
+        <a href="#" class="tile" style="height:270px;background:linear-gradient(155deg,#d6cfc2 0%,#8b8478 100%)">
+          <div class="tile-overlay"></div>
+          <div class="tile-badge"><span class="tile-badge-icon">verified</span> Verified</div>
+          <span class="tile-save">bookmark_border</span>
+          <div class="tile-cap">
+            <div class="tile-role-dots"><div class="tile-role-dot s"></div></div>
+            <div class="tile-title">Bridge Retrofit</div>
+            <div class="tile-sub">Iyer Engineers · Chennai · 2023</div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="load-more">
+      <button class="btn-ghost">
+        <span style="font-family:'Material Symbols Outlined';font-size:18px;line-height:1;font-weight:400">expand_more</span>
+        Load 24 more
+      </button>
+    </div>
+  </main>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-logo">BuiltFolio</span>
+    <div class="footer-links">
+      <a href="#">About</a><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Takedown</a><a href="#">Contact</a>
+    </div>
+    <span style="font-size:13px">© 2026 BuiltFolio</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1500}}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

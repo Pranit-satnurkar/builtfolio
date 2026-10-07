@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Professionals – Browse Architects &amp; Engineers · BuiltFolio</title>
+<meta name="description" content="Browse verified architects, structural engineers, interior designers and contractors across India on BuiltFolio.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#F6F4EF;--card:#FFFFFF;--ink:#15181E;--mute:#626B78;--line:#DDD9CF;
+  --blue:#1F4E8C;--blue-soft:#E8EEF6;--blue-mid:#3A6DB5;
+  --orange:#C94F12;--orange-soft:#FAE8DF;--ok:#2E7D32;--ok-soft:#E8F5E9;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08);--shadow:0 4px 16px rgba(0,0,0,.1);--shadow-lg:0 12px 40px rgba(0,0,0,.15)
+}
+body{margin:0;font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:'Sora',system-ui,sans-serif;margin:0;line-height:1.2}
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:24px;height:68px}
+.logo{font-family:'Sora';font-weight:700;font-size:20px;color:var(--blue);display:flex;align-items:center;gap:8px;flex-shrink:0}
+.logo-mark{width:28px;height:28px;background:var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:16px;height:16px;fill:#fff}
+.nav-links{display:flex;gap:4px;flex:1;margin-left:8px}
+.nav-link{padding:8px 14px;font-size:14px;font-weight:500;color:var(--mute);border-radius:8px;transition:all .18s}
+.nav-link:hover{color:var(--ink);background:var(--bg)}
+.nav-link.active{color:var(--ink);font-weight:600}
+.nav-actions{display:flex;gap:10px;align-items:center;flex-shrink:0}
+.btn-ghost-sm{font-size:14px;font-weight:600;color:var(--ink);padding:8px 14px;border-radius:8px;transition:all .18s;border:1.5px solid transparent}
+.btn-ghost-sm:hover{border-color:var(--line);background:var(--card)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;border-radius:9px;padding:10px 20px;font-weight:700;font-size:14px;font-family:'DM Sans';cursor:pointer;border:0;transition:all .2s;box-shadow:0 2px 8px rgba(201,79,18,.3)}
+.btn:hover{background:#b34410;transform:translateY(-1px)}
+
+/* PAGE HERO */
+.page-hero{background:linear-gradient(135deg,#0E1F3D 0%,#1F4E8C 100%);padding:52px 0;position:relative;overflow:hidden}
+.page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:32px 32px}
+.page-hero-inner{max-width:1200px;margin:0 auto;padding:0 24px;position:relative}
+.page-hero h1{font-size:40px;color:#fff;margin-bottom:8px}
+.page-hero p{font-size:16px;color:rgba(184,194,208,.85);max-width:500px}
+
+/* FILTERS BAR */
+.filter-bar{background:var(--card);border-bottom:1px solid var(--line);padding:14px 0;position:sticky;top:68px;z-index:50}
+.filter-bar-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.search-inline{display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:10px;padding:9px 14px;background:var(--card);flex:1;max-width:360px;transition:border-color .15s}
+.search-inline:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(31,78,140,.12)}
+.search-inline-icon{font-family:'Material Symbols Outlined';font-size:18px;line-height:1;color:var(--mute);font-weight:400}
+.search-inline input{border:0;outline:0;font:500 14px 'DM Sans';background:transparent;width:100%;color:var(--ink)}
+.search-inline input::placeholder{color:#9AA5B1}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--card);border-radius:99px;padding:7px 16px;font-size:13px;font-weight:500;cursor:pointer;transition:all .18s;color:var(--mute);user-select:none;white-space:nowrap}
+.chip:hover{border-color:#b0a994;color:var(--ink);background:#faf9f6;transform:translateY(-1px)}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chip-icon{font-family:'Material Symbols Outlined';font-size:15px;line-height:1;font-weight:400}
+.results-meta{font-size:14px;color:var(--mute);margin-left:auto}
+.results-meta b{color:var(--ink)}
+
+/* LAYOUT */
+.sec{max-width:1200px;margin:0 auto;padding:32px 24px 64px}
+
+/* PRO GRID */
+.pro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pro-card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;transition:all .22s;text-decoration:none;color:inherit;display:block}
+.pro-card:hover{border-color:var(--blue);box-shadow:var(--shadow);transform:translateY(-3px)}
+.pro-card-cover{height:100px;position:relative;overflow:hidden}
+.pro-card-cover-img{position:absolute;inset:0;background:linear-gradient(135deg,#1F4E8C 0%,#3A6DB5 100%)}
+.pro-card-avatar-wrap{position:absolute;bottom:-28px;left:20px}
+.pro-card-avatar{width:60px;height:60px;border-radius:50%;border:3px solid var(--card);box-shadow:var(--shadow-sm)}
+.pro-card-verified{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.95);border-radius:99px;padding:4px 10px;font-size:11px;font-weight:700;color:var(--ok);display:flex;align-items:center;gap:4px}
+.pro-card-verified-icon{font-family:'Material Symbols Outlined';font-size:13px;line-height:1;font-weight:400}
+.pro-card-body{padding:40px 20px 20px}
+.pro-card-name{font-family:'Sora';font-size:16px;font-weight:600}
+.pro-card-meta{font-size:13px;color:var(--mute);margin-top:3px}
+.pro-card-disc{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.pro-disc{font-size:11px;background:var(--blue-soft);color:var(--blue);padding:3px 9px;border-radius:99px;font-weight:600}
+.pro-card-stats{display:flex;gap:0;border-top:1px solid var(--line);margin-top:16px}
+.pro-card-stat{flex:1;padding:12px 0;text-align:center;border-right:1px solid var(--line)}
+.pro-card-stat:last-child{border-right:0}
+.pro-card-stat-num{font-family:'Sora';font-size:18px;font-weight:700}
+.pro-card-stat-label{font-size:11px;color:var(--mute);margin-top:2px}
+
+/* DISCIPLINE SECTION HEADER */
+.disc-section{margin-bottom:40px}
+.disc-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.disc-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Outlined';font-size:20px;line-height:1;font-weight:400;font-style:normal}
+.disc-icon.blue{background:var(--blue-soft);color:var(--blue)}
+.disc-icon.orange{background:var(--orange-soft);color:var(--orange)}
+.disc-title{font-size:18px;font-weight:700}
+.disc-count{font-size:13px;color:var(--mute);font-family:'DM Sans';font-weight:500}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mute)}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:'Sora';font-weight:700;font-size:16px;color:var(--blue)}
+.footer-links{display:flex;gap:20px;font-size:13px}
+.footer-links a:hover{color:var(--ink)}
+
+@media(max-width:1024px){.pro-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.pro-grid{grid-template-columns:1fr}.page-hero h1{font-size:30px}}
+</style>
+</helmet>
+
+<div style="min-height:100%">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="Main.dc.html" class="logo">
+      <div class="logo-mark"><svg viewBox="0 0 16 16"><path d="M2 14V6l6-4 6 4v8H10V9H6v5H2z"/></svg></div>
+      BuiltFolio
+    </a>
+    <div class="nav-links">
+      <a href="Explore.dc.html" class="nav-link">Explore</a>
+      <a href="People.dc.html" class="nav-link active">Professionals</a>
+      <a href="#" class="nav-link">Firms</a>
+      <a href="#" class="nav-link">Journal</a>
+    </div>
+    <div class="nav-actions">
+      <a href="#" class="btn-ghost-sm">Log in</a>
+      <a href="Dashboard.dc.html" class="btn">
+        <span style="font-family:'Material Symbols Outlined';font-size:18px;line-height:1;font-weight:400">upload</span>
+        Upload project
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner">
+    <h1>Professionals directory</h1>
+    <p>340+ verified architects, civil engineers, interior designers and contractors across India.</p>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filter-bar">
+  <div class="filter-bar-inner">
+    <div class="search-inline">
+      <span class="search-inline-icon">search</span>
+      <input placeholder="Search by name, firm, city…" id="people-search" autocomplete="off">
+    </div>
+    <div class="chip on"><span class="chip-icon">badge</span> All disciplines</div>
+    <div class="chip"><span class="chip-icon">architecture</span> Architects</div>
+    <div class="chip"><span class="chip-icon">engineering</span> Structural</div>
+    <div class="chip"><span class="chip-icon">weekend</span> Interiors</div>
+    <div class="chip"><span class="chip-icon">construction</span> Contractors</div>
+    <div class="chip"><span class="chip-icon">location_city</span> City ▾</div>
+    <div class="chip"><span class="chip-icon">verified</span> Verified</div>
+    <span class="results-meta"><b>340</b> professionals</span>
+  </div>
+</div>
+
+<div class="sec">
+
+  <!-- ARCHITECTS -->
+  <div class="disc-section">
+    <div class="disc-header">
+      <div class="disc-icon blue">architecture</div>
+      <div>
+        <div class="disc-title">Architects</div>
+        <div class="disc-count">148 professionals</div>
+      </div>
+    </div>
+    <div class="pro-grid">
+
+      <a href="Profile.dc.html" class="pro-card">
+        <div class="pro-card-cover">
+          <div class="pro-card-cover-img" style="background:linear-gradient(135deg,#2f5a4b 0%,#7fa393 100%)"></div>
+          <div class="pro-card-verified"><span class="pro-card-verified-icon">verified</span>Verified CA</div>
+          <div class="pro-card-avatar-wrap">
+            <div class="pro-card-avatar" style="background:linear-gradient(140deg,#7fa393,#2f5a4b)"></div>
+          </div>
+        </div>
+        <div class="pro-card-body">
+          <div class="pro-card-name">Ritu Desai</div>
+          <div class="pro-card-meta">Architect · Pune, Maharashtra</div>
+          <div class="pro-card-disc">
+            <span class="pro-disc">Residential</span><span class="pro-disc">Interiors</span><span class="pro-disc">Passive design</span>
+          </div>
+          <div class="pro-card-stats">
+            <div class="pro-card-stat"><div class="pro-card-stat-num">34</div><div class="pro-card-stat-label">Projects</div></div>
+            <div class="pro-card-stat"><div class="pro-card-stat-num">12 yr</div><div class="pro-card-stat-label">Exp.</div></div>
+            <div class="pro-card-stat"><div class="pro-card-stat-num">98%</div><div class="pro-card-stat-label">Credits</div></div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="pro-card">
+        <div class="pro-card-cover">
+          <div class="pro-card-cover-img" style="background:linear-gradient(135deg,#3b536e 0%,#8aa0b8 100%)"></div>
+          <div class="pro-card-verified"><span class="pro-card-verified-icon">verified</span>Verified CA</div>
+          <div class="pro-card-avatar-wrap">
+            <div class="pro-card-avatar" style="background:linear-gradient(140deg,#8aa0b8,#3b536e)"></div>
+          </div>
+        </div>
+        <div class="pro-card-body">
+          <div class="pro-card-name">Studio Anvaya</div>
+          <div class="pro-card-meta">Architects · Nagpur, Maharashtra</div>
+          <div class="pro-card-disc">
+            <span class="pro-disc">Residential</span><span class="pro-disc">Commercial</span>
+          </div>
+          <div class="pro-card-stats">
+            <div class="pro-card-stat"><div class="pro-card-stat-num">21</div><div class="pro-card-stat-label">Projects</div></div>
+            <div class="pro-card-stat"><div class="pro-card-stat-num">8 yr</div><div class="pro-card-stat-label">Exp.</div></div>
+            <div class="pro-card-stat"><div class="pro-card-stat-num">96%</div><div class="pro-card-stat-label">Credits</div></div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="pro-card">
+        <div class="pro-card-cover">
+          <div class="pro-card-cover-img" style="background:linear-gradient(135deg,#5e6f45 0%,#b4c09e 100%)"></div>
+          <div class="pro-card-verified"><span class="pro-card-verified-icon">verified</span>Verified CA</div>
+          <div class="pro-card-avatar-wrap">
+            <div class="pro-card-avatar" style="background:linear-gradient(140deg,#b4c09e,#5e6f45)"></div>
+          </div>
+        </div>
+        <div class="pro-card-body">
+          <div class="pro-card-name">Ar. Vivek Naik</div>
+          <div class="pro-card-meta">Architect · Lonavala, MH</div>
+          <div class="pro-card-disc">
+            <span class="pro-disc">Landscape</span><span class="pro-disc">Sustainable</span>
+          </div>
+          <div class="pro-card-stats">
+            <div class="pro-card-stat"><div class="pro-card-stat-num">18</div><div class="pro-card-stat-label">Projects</div></div>
+            <div class="pro-card-stat"><div class="pro-card-stat-num">15 yr</div><div class="pro-card-stat-label">Exp.</div></div>
+            <div class="pro-card-stat"><div class="pro-card-stat-num">100%</div><div class="pro-card-stat-label">Credits</div></div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- STRUCTURAL -->
+  <div class="disc-section">
+    <div class="disc-header">
+      <div class="disc-icon orange">engineering</div>
+      <div>
+        <div class="disc-title">Structural Engineers</div>
+        <div class="disc-count">72 professionals</div>
+      </div>
+    </div>
+    <div class="pro-grid">
+
+      <a href="#" class="pro-card">
+        <div class="pro-card-cover">
+          <div class="pro-card-cover-img" style="background:linear-gradient(135deg,#7a5a3a 0%,#c9a77c 100%)"></div>
+          <div class="pro-card-verified"><span class="pro-card-verified-icon">verified</span>Verified Firm</div>
+          <div class="pro-card-avatar-wrap">
+            <div class="pro-card-avatar" style="background:linear-gradient(140deg,#c9a77c,#7a5a3a)"></div>
+          </div>
+        </div>
+        <div class="pro-card-body">
+          <div class="pro-card-name">Iyer Engineers</div>
+          <div class="pro-card-meta">Structural firm · Chennai, TN</div>
+          <div class="pro-card-disc">
+            <span class="pro-disc">Industrial</span><span class="pro-disc">Infrastructure</span>
+          </div>
+          <div class="pro-card-stats">
+            <div class="pro-card-stat"><div class="pro-card-stat-num">58</div><div class="pro-card-stat-label">Projects</div></div>
+            <div class="pro-card-stat"><div class="pro-card-stat-num">20 yr</div><div class="pro-card-stat-label">Exp.</div></div>
+            <div class="pro-card-stat"><div class="pro-card-stat-num">100%</div><div class="pro-card-stat-label">Credits</div></div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="pro-card">
+        <div class="pro-card-cover">
+          <div class="pro-card-cover-img" style="background:linear-gradient(135deg,#1f2f4a 0%,#6d7f9c 100%)"></div>
+          <div class="pro-card-verified"><span class="pro-card-verified-icon">verified</span>Verified SE</div>
+          <div class="pro-card-avatar-wrap">
+            <div class="pro-card-avatar" style="background:linear-gradient(140deg,#6d7f9c,#1f2f4a)"></div>
+          </div>
+        </div>
+        <div class="pro-card-body">
+          <div class="pro-card-name">Shah Structures</div>
+          <div class="pro-card-meta">Structural firm · Surat, GJ</div>
+          <div class="pro-card-disc">
+            <span class="pro-disc">Industrial</span><span class="pro-disc">Commercial</span>
+          </div>
+          <div class="pro-card-stats">
+            <div class="pro-card-stat"><div class="pro-card-stat-num">32</div><div class="pro-card-stat-label">Projects</div></div>
+            <div class="pro-card-stat"><div class="pro-card-stat-num">11 yr</div><div class="pro-card-stat-label">Exp.</div></div>
+            <div class="pro-card-stat"><div class="pro-card-stat-num">97%</div><div class="pro-card-stat-label">Credits</div></div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="pro-card">
+        <div class="pro-card-cover">
+          <div class="pro-card-cover-img" style="background:linear-gradient(135deg,#8b8478 0%,#cfc8bc 100%)"></div>
+          <div class="pro-card-avatar-wrap">
+            <div class="pro-card-avatar" style="background:linear-gradient(140deg,#cfc8bc,#8b8478)"></div>
+          </div>
+        </div>
+        <div class="pro-card-body">
+          <div class="pro-card-name">Bhatt &amp; Bhatt SE</div>
+          <div class="pro-card-meta">Structural · Ahmedabad, GJ</div>
+          <div class="pro-card-disc">
+            <span class="pro-disc">Residential</span><span class="pro-disc">Bridge</span>
+          </div>
+          <div class="pro-card-stats">
+            <div class="pro-card-stat"><div class="pro-card-stat-num">19</div><div class="pro-card-stat-label">Projects</div></div>
+            <div class="pro-card-stat"><div class="pro-card-stat-num">9 yr</div><div class="pro-card-stat-label">Exp.</div></div>
+            <div class="pro-card-stat"><div class="pro-card-stat-num">92%</div><div class="pro-card-stat-label">Credits</div></div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- INTERIOR DESIGNERS -->
+  <div class="disc-section">
+    <div class="disc-header">
+      <div class="disc-icon blue">weekend</div>
+      <div>
+        <div class="disc-title">Interior Designers</div>
+        <div class="disc-count">86 professionals</div>
+      </div>
+    </div>
+    <div class="pro-grid">
+
+      <a href="#" class="pro-card">
+        <div class="pro-card-cover">
+          <div class="pro-card-cover-img" style="background:linear-gradient(135deg,#4c3d5c 0%,#a99bb5 100%)"></div>
+          <div class="pro-card-verified"><span class="pro-card-verified-icon">verified</span>Verified Firm</div>
+          <div class="pro-card-avatar-wrap">
+            <div class="pro-card-avatar" style="background:linear-gradient(140deg,#a99bb5,#4c3d5c)"></div>
+          </div>
+        </div>
+        <div class="pro-card-body">
+          <div class="pro-card-name">Sen &amp; Dey</div>
+          <div class="pro-card-meta">Interior design · Kolkata, WB</div>
+          <div class="pro-card-disc">
+            <span class="pro-disc">Interiors</span><span class="pro-disc">Residential</span>
+          </div>
+          <div class="pro-card-stats">
+            <div class="pro-card-stat"><div class="pro-card-stat-num">42</div><div class="pro-card-stat-label">Projects</div></div>
+            <div class="pro-card-stat"><div class="pro-card-stat-num">15 yr</div><div class="pro-card-stat-label">Exp.</div></div>
+            <div class="pro-card-stat"><div class="pro-card-stat-num">90%</div><div class="pro-card-stat-label">Credits</div></div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:8px">
+    <button style="display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--ink);border-radius:9px;padding:12px 28px;font-weight:700;font-size:14px;font-family:'DM Sans';background:transparent;color:var(--ink);cursor:pointer;transition:all .2s" onmouseover="this.style.background='var(--ink)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--ink)'">
+      <span style="font-family:'Material Symbols Outlined';font-size:18px;line-height:1;font-weight:400">expand_more</span>
+      Load more professionals
+    </button>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-logo">BuiltFolio</span>
+    <div class="footer-links">
+      <a href="#">About</a><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Takedown</a><a href="#">Contact</a>
+    </div>
+    <span style="font-size:13px">© 2026 BuiltFolio</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1800}}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

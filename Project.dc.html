@@ -1,0 +1,151 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>BuiltFolio – Project</title><script src="./support.js"></script></head><body><x-dc><helmet><link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&amp;family=DM+Sans:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght@400&amp;display=swap" rel="stylesheet">
+<style>body{margin:0;font-family:'DM Sans',system-ui,sans-serif;color:#15181E;background:#F6F4EF}a{color:inherit;text-decoration:none}a:hover{color:#C94F12}
+h1,h2,h3{font-family:Sora,system-ui,sans-serif;margin:0}
+.ms{font-family:'Material Symbols Outlined';font-size:20px;line-height:1;font-weight:400;font-style:normal;display:inline-block;vertical-align:middle}
+.eb{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#1F4E8C}
+.btn{display:inline-block;background:#C94F12;color:#fff;border-radius:8px;padding:11px 20px;font-weight:700;font-size:15px}
+.ghost{display:inline-block;border:1.5px solid #15181E;border-radius:8px;padding:10px 18px;font-weight:700;font-size:15px}
+.tb{display:inline-flex;align-items:center;gap:6px;border:1px solid #CFCABE;border-radius:8px;padding:7px 11px;font:600 13px 'DM Sans';cursor:pointer}
+.tab{padding:9px 14px;font:600 13px 'DM Sans';border:0;border-radius:8px 8px 0 0;cursor:pointer}
+.sec{max-width:1200px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.card{background:#fff;border:1px solid #DDD9CF;border-radius:12px;padding:20px}
+.pill{display:inline-block;background:#E8EEF6;color:#1F4E8C;border-radius:99px;padding:3px 10px;font-size:12px;font-weight:700}</style></helmet><div style="min-height:100%"><div style="background:#fff;border-bottom:1px solid #DDD9CF"><div class="sec" style="display:flex;align-items:center;gap:28px;height:68px"><a href="Main.dc.html" style="font-family:Sora;font-weight:700;font-size:20px;color:#1F4E8C">BuiltFolio</a><nav style="display:flex;gap:22px;font-size:15px;flex:1"><a href="Explore.dc.html" style="font-weight:700">Explore</a><a href="People.dc.html" style="font-weight:500">Professionals</a><a href="Profile.dc.html" style="font-weight:500">Profile</a><a href="Dashboard.dc.html" style="font-weight:500">Dashboard</a></nav><a href="Profile.dc.html" style="font-size:15px;font-weight:500">Log in</a><a href="Dashboard.dc.html" class="btn">Upload project</a></div></div>
+<div class="sec" style="padding-top:24px;padding-bottom:56px">
+<div style="font-size:13px;color:#626B78;margin-bottom:10px">Explore / Residential / Nagpur</div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px"><div><h1 style="font-size:32px">G+2 Residential Building, Nagpur</h1><div style="margin-top:6px;font-size:15px;color:#626B78">by <b style="color:#15181E">Studio Anvaya</b> · Architect · Structural · Contractor · <b style="color:#1F4E8C">Credits confirmed</b></div></div><div style="display:flex;gap:10px"><a href="#" class="ghost">Save</a><a href="#" class="ghost">Follow</a></div></div>
+
+<div class="eb" style="margin-bottom:8px">Interactive drawings</div>
+<div style="border:1px solid #CFCABE;border-radius:14px;background:#fff;overflow:hidden">
+ <div style="display:flex;align-items:flex-end;gap:4px;background:#E9E6DE;padding:8px 12px 0;border-bottom:1px solid #CFCABE;flex-wrap:wrap">
+  <button class="tab" onClick="{{goPlan}}" style="background:{{bgPlan}};color:{{fgPlan}}">Ground Floor Plan · PDF</button>
+  <button class="tab" onClick="{{goFoot}}" style="background:{{bgFoot}};color:{{fgFoot}}">Footing &amp; Columns · PDF</button>
+  <button class="tab" onClick="{{go3d}}" style="background:{{bg3d}};color:{{fg3d}}">3D Model · glTF</button>
+  <span class="tab" style="color:#626B78;font-weight:500"><span class="ms" style="font-size:15px">lock</span> Site Plan · DWG</span>
+  <span style="flex:1"></span><span style="font-size:12px;color:#626B78;padding:0 6px 10px">builtfolio.in/studio-anvaya/g2-nagpur</span>
+ </div>
+ <div style="display:flex;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid #E6E2D8;flex-wrap:wrap">
+  <button class="tb" onClick="{{toolPan}}" style="background:{{panBg}};color:{{panFg}}"><span class="ms">pan_tool</span>Pan</button>
+  <button class="tb" onClick="{{toolMeasure}}" style="background:{{meaBg}};color:{{meaFg}}"><span class="ms">straighten</span>Measure</button>
+  <sc-if value="{{is3d}}" hint-placeholder-val="{{ false }}"><button class="tb" onClick="{{toolOrbit}}" style="background:{{orbBg}};color:{{orbFg}}"><span class="ms">3d_rotation</span>Orbit</button></sc-if>
+  <span style="width:1px;height:24px;background:#DDD9CF"></span>
+  <button class="tb" onClick="{{zoomOut}}" aria-label="Zoom out" style="background:#fff"><span class="ms">zoom_out</span></button>
+  <span style="font-weight:700;font-size:13px;min-width:44px;text-align:center">{{pct}}</span>
+  <button class="tb" onClick="{{zoomIn}}" aria-label="Zoom in" style="background:#fff"><span class="ms">zoom_in</span></button>
+  <button class="tb" onClick="{{fit}}" style="background:#fff"><span class="ms">fit_screen</span>Fit</button>
+  <span style="flex:1"></span>
+  <button class="tb" onClick="{{unitM}}" style="background:{{uMBg}};color:{{uMFg}}">m</button>
+  <button class="tb" onClick="{{unitMM}}" style="background:{{uMMBg}};color:{{uMMFg}}">mm</button>
+  <a href="#" class="tb" style="background:#fff"><span class="ms">lock</span>Request download</a>
+ </div>
+ <div style="display:flex">
+  <div style="flex:1;min-width:0;background:#FBFAF6;position:relative">
+   <svg width="900" height="520" viewBox="0 0 900 520" style="display:block;width:100%;height:auto;cursor:{{cursor}};user-select:none" onMouseDown="{{down}}" onMouseMove="{{move}}" onMouseUp="{{up}}" onMouseLeave="{{up}}" onClick="{{click}}">
+    <defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#E4E0D5" stroke-width="1"></path></pattern></defs>
+    <rect width="900" height="520" fill="#FBFAF6"></rect>
+    <g transform="{{view}}">
+     <sc-if value="{{showGrid2d}}" hint-placeholder-val="{{ true }}"><rect x="-1200" y="-1200" width="3000" height="3000" fill="url(#g)"></rect></sc-if>
+     <sc-if value="{{isPlan}}" hint-placeholder-val="{{ true }}">
+      <g fill="none" stroke="#15181E" stroke-width="6" stroke-linejoin="round"><rect x="0" y="0" width="480" height="360"></rect><path stroke-width="4" d="M240 0V220M0 220H480M360 220V360"></path></g>
+      <path d="M200 220a30 30 0 0 1 30 -30M330 220a30 30 0 0 0 30 -30" fill="none" stroke="#626B78" stroke-width="1.5"></path>
+      <g font-family="DM Sans" font-size="11" font-weight="700" fill="#1F4E8C" text-anchor="middle"><text x="120" y="108">LIVING 6.00 x 5.50</text><text x="360" y="108">KITCHEN + DINING</text><text x="180" y="296">BEDROOM 9.00 x 3.50</text><text x="420" y="296">BATH</text></g>
+      <sc-if value="{{dims}}" hint-placeholder-val="{{ true }}"><g stroke="#C94F12" stroke-width="1.2" fill="#C94F12" font-family="DM Sans" font-size="11" font-weight="700"><path d="M0 -16H480M0 -22V-10M480 -22V-10M-16 0V360M-22 0H-10M-22 360H-10" fill="none"></path><text x="240" y="-22" text-anchor="middle" stroke="none">12.00 m</text><text x="-24" y="180" text-anchor="end" stroke="none">9.00 m</text></g></sc-if>
+     </sc-if>
+     <sc-if value="{{isFoot}}" hint-placeholder-val="{{ false }}">
+      <g fill="#DCE6F3" stroke="#1F4E8C" stroke-width="2" stroke-dasharray="6 4"><rect x="-20" y="-20" width="40" height="40"></rect><rect x="220" y="-20" width="40" height="40"></rect><rect x="460" y="-20" width="40" height="40"></rect><rect x="-20" y="160" width="40" height="40"></rect><rect x="220" y="160" width="40" height="40"></rect><rect x="460" y="160" width="40" height="40"></rect><rect x="-20" y="340" width="40" height="40"></rect><rect x="220" y="340" width="40" height="40"></rect><rect x="460" y="340" width="40" height="40"></rect></g>
+      <g fill="#15181E"><rect x="-6" y="-6" width="12" height="12"></rect><rect x="234" y="-6" width="12" height="12"></rect><rect x="474" y="-6" width="12" height="12"></rect><rect x="-6" y="174" width="12" height="12"></rect><rect x="234" y="174" width="12" height="12"></rect><rect x="474" y="174" width="12" height="12"></rect><rect x="-6" y="354" width="12" height="12"></rect><rect x="234" y="354" width="12" height="12"></rect><rect x="474" y="354" width="12" height="12"></rect></g>
+      <g font-family="DM Sans" font-size="11" font-weight="700" fill="#1F4E8C"><text x="26" y="-26">F1  1.00 x 1.00 m</text><text x="266" y="-26">F2</text><text x="266" y="154">F3</text></g>
+     </sc-if>
+     <sc-if value="{{has2}}" hint-placeholder-val="{{ false }}"><circle cx="{{a2x}}" cy="{{a2y}}" r="5" fill="#C94F12"></circle></sc-if>
+     <sc-if value="{{has22}}" hint-placeholder-val="{{ false }}"><line x1="{{a2x}}" y1="{{a2y}}" x2="{{b2x}}" y2="{{b2y}}" stroke="#C94F12" stroke-width="2.5" vector-effect="non-scaling-stroke"></line><circle cx="{{b2x}}" cy="{{b2y}}" r="5" fill="#C94F12"></circle></sc-if>
+     <sc-for list="{{faces}}" as="f" hint-placeholder-count="2"><polygon points="{{f.pts}}" fill="{{f.fill}}" stroke="{{f.stroke}}" stroke-width="1"></polygon></sc-for>
+     <sc-if value="{{has3}}" hint-placeholder-val="{{ false }}"><line x1="{{a3x}}" y1="{{a3y}}" x2="{{b3x}}" y2="{{b3y}}" stroke="#C94F12" stroke-width="2.5" vector-effect="non-scaling-stroke"></line></sc-if>
+     <sc-for list="{{corners}}" as="c" hint-placeholder-count="2"><circle cx="{{c.cx}}" cy="{{c.cy}}" r="{{c.r}}" fill="{{c.fill}}" stroke="#fff" stroke-width="1.5" onClick="{{c.pick}}"></circle></sc-for>
+    </g>
+   </svg>
+   <div style="position:absolute;left:14px;bottom:12px;background:#15181E;color:#fff;border-radius:8px;padding:7px 12px;font-size:12px;font-weight:600">{{hint}}</div>
+  </div>
+  <div style="width:250px;border-left:1px solid #E6E2D8;padding:16px;display:flex;flex-direction:column;gap:16px;box-sizing:border-box">
+   <div><div class="eb">Measurement</div><div style="font:700 26px Sora;margin-top:6px">{{readout}}</div><div style="font-size:12px;color:#626B78;margin-top:2px">{{readNote}}</div><button class="tb" onClick="{{clear}}" style="background:#fff;margin-top:10px">Clear</button></div>
+   <div><div class="eb">Layers</div>
+    <button class="tb" onClick="{{togGrid}}" style="background:#fff;margin-top:8px;width:100%"><span class="ms">grid_on</span>Grid · {{gridTxt}}</button>
+    <button class="tb" onClick="{{togDims}}" style="background:#fff;margin-top:6px;width:100%"><span class="ms">design_services</span>Dimensions · {{dimsTxt}}</button></div>
+   <div><div class="eb">Sheet info</div><div style="font-size:13px;line-height:1.7;margin-top:6px">{{info}}</div></div>
+   <div><span class="pill">Watermarked preview</span><p style="font-size:12px;color:#626B78;margin:8px 0 0">Reference only, not for construction.</p></div>
+  </div>
+ </div>
+</div>
+
+<div style="margin-top:36px" class="eb">Access</div><h2 style="font-size:24px;margin:6px 0 16px">Preview free. Download with approval.</h2>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+ <div class="card"><div style="display:flex;align-items:center;gap:10px"><span class="ms" style="color:#1F4E8C">visibility</span><span class="eb">01</span></div><h3 style="font-size:17px;margin:8px 0 4px">Explore in the viewer</h3><p style="margin:0;font-size:14px;color:#626B78;line-height:1.55">Zoom, pan, measure and orbit 3D models without signing in.</p></div>
+ <div class="card"><div style="display:flex;align-items:center;gap:10px"><span class="ms" style="color:#1F4E8C">outgoing_mail</span><span class="eb">02</span></div><h3 style="font-size:17px;margin:8px 0 4px">Request the file</h3><p style="margin:0;font-size:14px;color:#626B78;line-height:1.55">Verify by OTP and the credited professional gets your request.</p></div>
+ <div class="card"><div style="display:flex;align-items:center;gap:10px"><span class="ms" style="color:#1F4E8C">link</span><span class="eb">03</span></div><h3 style="font-size:17px;margin:8px 0 4px">Use the approved link</h3><p style="margin:0;font-size:14px;color:#626B78;line-height:1.55">A signed download link, valid for 24 hours.</p></div>
+</div>
+
+<div style="display:grid;grid-template-columns:2fr 1fr;gap:32px;align-items:start;margin-top:36px">
+ <div><div class="eb">About</div><h2 style="font-size:22px;margin:6px 0 8px">G+2 on a 30 x 40 ft plot</h2><p style="line-height:1.6;color:#3A424E;margin:0">Stilt parking with two floors above. Load-bearing walls at the rear, RCC frame at the front. Natural ventilation drives the section.</p></div>
+ <aside class="card"><div class="eb">Project facts</div>
+  <div style="margin:8px 0 16px;font-size:14px;line-height:2"><div style="display:flex;justify-content:space-between"><span style="color:#626B78">Built-up area</span><b>1,100 Sqft</b></div><div style="display:flex;justify-content:space-between"><span style="color:#626B78">City</span><b>Nagpur, MH</b></div><div style="display:flex;justify-content:space-between"><span style="color:#626B78">Year</span><b>2024</b></div><div style="display:flex;justify-content:space-between"><span style="color:#626B78">Cost band</span><b>₹38,00,000.00 – ₹44,00,000.00</b></div></div>
+  <a href="#" class="btn" style="display:block;text-align:center">Enquire about this project</a>
+  <div style="margin-top:16px;padding-top:14px;border-top:1px solid #DDD9CF"><a href="#" class="ghost" style="display:block;text-align:center">Estimate on Civimetric ↗</a><div style="font-size:12px;color:#626B78;margin-top:8px">Powered by Civimetric. Indicative, not a quotation.</div></div></aside>
+</div></div></div></x-dc><script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1700}}'>class Component extends DCLogic{
+constructor(p){super(p);this.state={sheet:'plan',tool:'pan',z:1.3,px:138,py:40,yaw:0.6,pitch:0.62,grid:true,dims:true,unit:'m',m2:[],m3:[],drag:false};}
+home(s){return s==='3d'?{z:1,px:450,py:300,tool:'orbit'}:{z:1.3,px:138,py:40,tool:'pan'};}
+zoomBy(k){const s=this.state,nz=Math.max(0.4,Math.min(6,s.z*k)),r=nz/s.z;this.setState({z:nz,px:450-(450-s.px)*r,py:260-(260-s.py)*r});}
+fmt(d){return this.state.unit==='mm'?Math.round(d*1000)+' mm':d.toFixed(2)+' m';}
+renderVals(){
+const s=this.state,S=38,is3d=s.sheet==='3d';
+const act=(c)=>c?['#15181E','#fff']:['#fff','#15181E'];
+const tabc=(n)=>s.sheet===n?['#fff','#15181E']:['#E9E6DE','#626B78'];
+const tp=tabc('plan'),tf=tabc('footing'),t3=tabc('3d'),ap=act(s.tool==='pan'),am=act(s.tool==='measure'),ao=act(s.tool==='orbit'),um=act(s.unit==='m'),umm=act(s.unit==='mm');
+const go=(n)=>()=>this.setState({sheet:n,...this.home(n),m2:[],m3:[]});
+const P=(x,y,z)=>{const c=Math.cos(s.yaw),n=Math.sin(s.yaw),xr=x*c-y*n,yr=x*n+y*c;return{x:xr*S,y:(yr*Math.sin(s.pitch)-z*Math.cos(s.pitch))*S};};
+let faces=[],corners=[];
+if(is3d){
+ const B=[[-6,-4.5],[6,-4.5],[6,4.5],[-6,4.5]];
+ const L=[[0,2.6,[150,160,176]],[2.6,5.7,[206,197,180]],[5.7,8.8,[226,219,205]],[8.8,9.0,[104,116,134]]];
+ L.forEach((l,li)=>{
+  for(let i=0;i<4;i++){
+   const a=B[i],b=B[(i+1)%4],dx=b[0]-a[0],dy=b[1]-a[1],nx=dy,ny=-dx,len=Math.hypot(nx,ny),c=Math.cos(s.yaw),n=Math.sin(s.yaw);
+   const rx=(nx*c-ny*n)/len,ry=(nx*n+ny*c)/len;
+   if(ry<=0)continue;
+   const br=Math.max(0.55,Math.min(1.05,0.8+0.25*(rx*0.6-ry*0.2))),col='rgb('+l[2].map(v=>Math.round(v*br)).join(',')+')';
+   const q=[P(a[0],a[1],l[0]),P(b[0],b[1],l[0]),P(b[0],b[1],l[1]),P(a[0],a[1],l[1])];
+   faces.push({pts:q.map(p=>p.x.toFixed(1)+','+p.y.toFixed(1)).join(' '),fill:col,stroke:'rgba(21,24,30,0.35)'});
+   if(li===1||li===2){const f=(t)=>[a[0]+dx*t,a[1]+dy*t],u=f(0.12),v=f(0.88),w=[P(u[0],u[1],l[0]+0.9),P(v[0],v[1],l[0]+0.9),P(v[0],v[1],l[0]+2.1),P(u[0],u[1],l[0]+2.1)];
+    faces.push({pts:w.map(p=>p.x.toFixed(1)+','+p.y.toFixed(1)).join(' '),fill:'rgba(31,78,140,0.6)',stroke:'none'});}
+  }
+  const t=B.map(b=>P(b[0],b[1],l[1]));
+  faces.push({pts:t.map(p=>p.x.toFixed(1)+','+p.y.toFixed(1)).join(' '),fill:'rgb('+l[2].map(v=>Math.round(v*1.04)).join(',')+')',stroke:'rgba(21,24,30,0.35)'});
+ });
+ let id=0;
+ [-6,6].forEach(x=>[-4.5,4.5].forEach(y=>[0,8.8].forEach(z=>{const k=id++,p=P(x,y,z),on=s.m3.indexOf(k)>-1;corners.push({cx:p.x,cy:p.y,r:s.tool==='measure'?7:0,fill:on?'#C94F12':'#1F4E8C',pick:()=>{if(s.tool!=='measure')return;this.setState({m3:s.m3.length>=2?[k]:[...s.m3,k]});},x,y,z});})));
+}
+const cp=(k)=>corners[k];
+let readout='—',readNote='Choose Measure, then click two points.',has2=false,has22=false,has3=false,a2={x:0,y:0},b2={x:0,y:0};
+if(!is3d&&s.m2.length>0){has2=true;a2=s.m2[0];}
+if(!is3d&&s.m2.length>1){has22=true;b2=s.m2[1];const d=Math.hypot(b2.x-a2.x,b2.y-a2.y)/40;readout=this.fmt(d);readNote='Horizontal distance on sheet, scale 1:100';}
+let A3={cx:0,cy:0},B3={cx:0,cy:0};
+if(is3d){readNote=s.tool==='measure'?'Click two model corners to measure.':'Select Measure to pick corners.';
+ if(s.m3.length>1){has3=true;A3=cp(s.m3[0]);B3=cp(s.m3[1]);const d=Math.sqrt((A3.x-B3.x)**2+(A3.y-B3.y)**2+(A3.z-B3.z)**2);readout=this.fmt(d);readNote='Straight-line distance between corners.';}}
+const rectOf=(e)=>e.currentTarget.getBoundingClientRect();
+return{
+ bgPlan:tp[0],fgPlan:tp[1],bgFoot:tf[0],fgFoot:tf[1],bg3d:t3[0],fg3d:t3[1],panBg:ap[0],panFg:ap[1],meaBg:am[0],meaFg:am[1],orbBg:ao[0],orbFg:ao[1],uMBg:um[0],uMFg:um[1],uMMBg:umm[0],uMMFg:umm[1],
+ goPlan:go('plan'),goFoot:go('footing'),go3d:go('3d'),is3d,isPlan:s.sheet==='plan',isFoot:s.sheet==='footing',
+ toolPan:()=>this.setState({tool:'pan'}),toolMeasure:()=>this.setState({tool:'measure'}),toolOrbit:()=>this.setState({tool:'orbit'}),
+ zoomIn:()=>this.zoomBy(1.25),zoomOut:()=>this.zoomBy(0.8),fit:()=>this.setState(this.home(s.sheet)),pct:Math.round(s.z/(is3d?1:1.3)*100)+'%',
+ unitM:()=>this.setState({unit:'m'}),unitMM:()=>this.setState({unit:'mm'}),
+ cursor:s.tool==='measure'?'crosshair':(s.drag?'grabbing':'grab'),
+ down:()=>{if(s.tool!=='measure')this.setState({drag:true});},up:()=>this.setState({drag:false}),
+ move:(e)=>{if(!s.drag)return;const f=900/rectOf(e).width,dx=e.movementX*f,dy=e.movementY*f;
+  if(is3d&&s.tool==='orbit')this.setState({yaw:s.yaw+dx*0.01,pitch:Math.max(0.15,Math.min(1.2,s.pitch+dy*0.006))});
+  else this.setState({px:s.px+dx,py:s.py+dy});},
+ click:(e)=>{if(s.tool!=='measure'||is3d)return;const r=rectOf(e),sx=(e.clientX-r.left)*900/r.width,sy=(e.clientY-r.top)*520/r.height;
+  const pt={x:Math.round(((sx-s.px)/s.z)/4)*4,y:Math.round(((sy-s.py)/s.z)/4)*4};this.setState({m2:s.m2.length>=2?[pt]:[...s.m2,pt]});},
+ view:'translate('+s.px+' '+s.py+') scale('+s.z+')',
+ showGrid2d:s.grid&&!is3d,faces,corners,has2,has22,has3,a2x:a2.x,a2y:a2.y,b2x:b2.x,b2y:b2.y,a3x:A3.cx,a3y:A3.cy,b3x:B3.cx,b3y:B3.cy,
+ readout,readNote,clear:()=>this.setState({m2:[],m3:[]}),dims:s.dims,
+ togGrid:()=>this.setState({grid:!s.grid}),togDims:()=>this.setState({dims:!s.dims}),gridTxt:s.grid?'On':'Off',dimsTxt:s.dims?'On':'Off',
+ hint:is3d?'Drag to orbit · buttons to zoom · Pan tool to move':(s.tool==='measure'?'Click two points to measure':'Drag to pan · buttons to zoom'),
+ info:s.sheet==='plan'?'Sheet A-01<br>Scale 1:100<br>Revision R2<br>Units: m':s.sheet==='footing'?'Sheet S-01<br>Scale 1:50<br>Revision R3<br>Units: m':'Model: glTF<br>Storeys: stilt + 2<br>Height: 8.80 m<br>Revision R1'
+};}}</script></body></html>
